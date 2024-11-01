@@ -1,0 +1,55 @@
+{
+  "name": "@xw-tech/wechat-sdk",
+  "version": "0.0.1",
+  "description": "微信xy-SDK",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "lib/*.js",
+    "lib/*.d.ts",
+    "index.js",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "wechat",
+    "sdk"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.19.56",
+    "git-contributor": "^0.1.0",
+    "release-it": "^17.10.0",
+    "tsd": "^0.26.0",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "tsd": "tsd",
+    "build": "tsc -p ./tsconfig.json",
+    "build:watch": "tsc -p ./tsconfig.json --watch",
+    "clean": "tsc --build --clean",
+    "release": "release-it",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/js571/wechat-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/js571/wechat-sdk/issues"
+  },
+  "homepage": "https://github.com/js571/wechat-tbk",
+  "author": "Maat",
+  "license": "MIT",
+  "peerDependencies": {
+    "axios": ">=0.19.0"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2",
+    "dayjs": "^1.11.13"
+  }
+}
