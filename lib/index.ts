@@ -347,20 +347,29 @@ export default class WechatService {
     robot,
     content: string,
     imageList: string[] = [],
-    comments: string[] = []
+    comments: string[] = [],
+    black_list: string = '',
+    group_user: string = ''
   ) {
     const api = `${this.prefix}.robot.macsend.circle`;
+    const body = {
+      robot_id: robot,
+      content: content,
+      pic_url: imageList.join(';'),
+    };
+    if (black_list) {
+      body['black_list'] = black_list;
+    }
+    if (group_user) {
+      body['group_user'] = group_user;
+    }
     const res = await this.request<{
       object: {
         id: string;
         userName: string;
         createTime: string;
       };
-    }>(api, {
-      robot_id: robot,
-      content: content,
-      pic_url: imageList.join(';'),
-    });
+    }>(api, body);
     const {
       object: { id, userName },
     } = res;
@@ -643,5 +652,17 @@ export default class WechatService {
     } catch (e) {
       return 0;
     }
+  }
+  async lableList(robot: string) {
+    const api = `${this.prefix}.robot.label.list`;
+    const res = await this.request<
+      {
+        labelName: string;
+        labelId: string;
+      }[]
+    >(api, {
+      robot_id: robot,
+    });
+    return res;
   }
 }
