@@ -153,7 +153,7 @@ export default class WechatService {
     }>;
     checkLogin(robot: string, wId: string): Promise<CheckLogin>;
     offline(robot: string): Promise<1 | 0>;
-    lableList(robot: string): Promise<{
+    labelList(robot: string): Promise<{
         labelName: string;
         labelId: string;
     }[]>;

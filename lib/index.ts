@@ -653,7 +653,7 @@ export default class WechatService {
       return 0;
     }
   }
-  async lableList(robot: string) {
+  async labelList(robot: string) {
     const api = `${this.prefix}.robot.label.list`;
     const res = await this.request<
       {
